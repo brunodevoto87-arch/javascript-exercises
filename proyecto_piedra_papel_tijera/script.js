@@ -5,10 +5,14 @@ let getComputerChoice = () => {
    const randomIndex = Math.floor(Math.random()*3);
    return compuChoice[randomIndex];
 }
-let getHumanChoice = ()=> {
-    const humanChoice = prompt("Elige Piedra, Papel o Tijera").toLowerCase();
-    return humanChoice;
-}
+    const botonPiedra = document.querySelector("#btn1");  
+    const botonPapel = document.querySelector("#btn2");
+    const botonTijera = document.querySelector("#btn3");
+    const resultados = document.querySelector("#resultados");
+    
+/*let getHumanChoice = ()=> {
+    /*const humanChoice = prompt("Elige Piedra, Papel o Tijera").toLowerCase();
+    return humanChoice;*/
 let playRound = (humanChoice, compuChoice) => {
     if (humanChoice === compuChoice){
     console.log("Es un empate");
@@ -26,8 +30,16 @@ let playRound = (humanChoice, compuChoice) => {
         console.log("Computadora gana");
         computerScore++;
     }
+    resultados.textContent = `Humano: ${humanScore} - Computadora: ${computerScore}`;
+    if (humanScore === 5 || computerScore === 5){
+        if (humanScore === 5){
+            resultados.textContent = "Felicitaciones Ganaste el Juego!";
+        }else {
+            resultados.textContent = "La compu gana, intentalo de nuevo!"
+        }
+    }
 }
-const playGame = () => {
+/*const playGame = () => {
     for (let i = 0; i < 5; i++){
         const humanSelection = getHumanChoice();
         const compuSelection = getComputerChoice();
@@ -43,4 +55,18 @@ const playGame = () => {
         console.log("La partida termino en empate!")
     }
 }
-playGame();
+playGame();*/
+botonPiedra.addEventListener("click", ()=>{
+    const jugadaCompu = getComputerChoice();
+    playRound("piedra", jugadaCompu);
+});
+
+botonPapel.addEventListener("click", ()=> {
+    const jugadaCompu = getComputerChoice();
+    playRound("papel", jugadaCompu);
+});
+
+botonTijera.addEventListener("click", ()=>{
+    const jugadaCompu = getComputerChoice();
+    playRound("tijera", jugadaCompu);
+});
