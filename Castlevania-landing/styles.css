@@ -1,0 +1,287 @@
+body{
+    margin: 0;
+    background-color: #0b0b0d;
+    color: #e2e2e2;
+}
+h1, h2, h3 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(139, 0, 0, 0.3);
+}   
+/* Modificamos el UL pero SOLO el que está dentro de .header */
+.header {
+    display: flex;
+    flex-direction: row;       /* Fuerza a que los elementos se pongan en fila */
+    justify-content: space-between; /* Empuja el título a la izquierda y el menú a la derecha */
+    align-items: center;       /* Alinea perfectamente el texto verticalmente */
+    padding: 24px 48px;
+    background-color: #050507;
+    border-bottom: 2px solid #8b0000;
+    width: 100%;               /* Asegura que ocupe todo el ancho disponible */
+    box-sizing: border-box;    /* Evita que el padding rompa el ancho de la pantalla */
+}
+.header ul {
+    list-style-type: none;
+    display: flex;
+    gap: 32px;                     
+    margin: 0;
+    padding: 0;
+}
+
+/* Modificamos las etiquetas A pero SOLO las que están dentro de .header */
+.header a {
+    text-decoration: none;
+    color: goldenrod;
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;            
+    transition: color 0.3s ease;
+}
+
+/* Efecto Hover exclusivo para el menú del header */
+.header a:hover {
+    color: #ff0000;                
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Línea animada exclusiva para el menú del header */
+.header a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #ff0000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.header a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.header nav {
+    margin-left: auto; /* Empuja mágicamente todo el menú hacia la derecha */
+}
+.hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 48px;
+}
+.features-section{
+    text-align: center;
+}
+
+.hero-info{
+    padding-right: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 600px;
+}
+.hero-info p{
+    line-height: 1.6;
+    text-align: justify;
+    font-size: 16px;
+    color: #c8c8cc;
+}
+.hero-image img{
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+}
+.hero-image, .hero-info{
+    flex: 1;
+}
+.cards-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+}
+/* Contenedor individual de la tarjeta */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 160px;
+    transition: transform 0.3s ease; /* Suaviza la animación al pasar el mouse */
+}
+
+/* Animación: la tarjeta se eleva y brilla al pasar el mouse */
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card:hover .card-box {
+    border-color: #ff0000; /* El borde dorado cambia a rojo sangre */
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); /* Resplandor rojo */
+}
+
+/* La caja contenedora */
+.card-box {
+    width: 150px;
+    height: 150px;
+    border: 2px solid goldenrod;
+    border-radius: 8px;
+    background-color: #121214; /* Fondo oscuro interno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Corta cualquier parte de la imagen que se salga */
+    transition: all 0.3s ease;
+}
+
+/* Control estricto de las imágenes de las tarjetas */
+.card-img {
+    width: auto; /* Deja un margen elegante dentro de la caja */
+    height: auto;
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain; /* Mantiene la proporción de los sprites sin deformarlos */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8)); /* Sombra para los sprites */
+    mix-blend-mode: lighten;
+}
+
+/* Estilo para los textos debajo de las tarjetas */
+.card p {
+    color: goldenrod;
+    font-weight: 600;
+    margin-top: 12px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.quote-section {
+    background: linear-gradient(135deg, #16161a 0%, #0d0d11 100%); /* Fondo oscuro con degradado */
+    border-left: 4px solid #8b0000;  /* Línea vertical roja a la izquierda */
+    border-right: 4px solid #8b0000; /* Línea vertical roja a la derecha */
+    padding: 48px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 40px auto;
+    max-width: 800px;                /* Controla el ancho para que no se estire infinitamente */
+    border-radius: 6px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8); /* Sombra interna para dar profundidad */
+}
+
+/* El texto de la frase de Drácula */
+.quote-section p:first-child {
+    font-style: italic;
+    font-size: 26px;
+    color: #e2e2e2;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* El autor ("-Count Dracula") */
+.author {
+    font-size: 18px;
+    color: goldenrod;
+    font-weight: 600;
+    margin: 0;
+    align-self: flex-end;            /* Empuja el nombre a la esquina inferior derecha del bloque */
+}
+
+.cta-section{
+    padding: 64px 0;
+    display: flex;
+    justify-content: center;
+}
+.cta-banner{
+    background-color: darkred;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 64px;
+    width: 80%;
+    border-radius: 8px;
+}
+footer {
+    color: #a39373;                /* Un dorado apagado y antiguo */
+    background-color: #050507;     /* El mismo tono oscuro del header */
+    padding: 32px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid #8b0000; /* Línea roja superior para cerrar el diseño */
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    gap: 24px;
+}
+a{
+    text-decoration: none;
+    color: goldenrod;
+}
+button{
+    background-color: #8b0000;
+    color: goldenrod;
+    padding: 12px 24px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+/* Buscamos la segunda tarjeta (Inverted Castle) dentro del contenedor */
+.cards-container .card:nth-child(2):hover {
+    transform: translateY(-10px) rotate(180deg); /* Se eleva y se da la vuelta por completo */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Transición suave y misteriosa */
+}
+
+/* Evitamos que el texto de abajo se quede de cabeza al rotar */
+.cards-container .card:nth-child(2):hover p {
+    transform: rotate(-180deg); 
+}
+/* Alinea el input y el botón en una fila limpia */
+.cta-form {
+    display: flex;
+    gap: 12px;
+}
+
+/* El campo donde se escribe el correo */
+.cta-input {
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro semitransparente */
+    border: 1px solid goldenrod;           /* Borde dorado sutil */
+    border-radius: 4px;
+    padding: 12px 16px;
+    color: #e2e2e2;
+    font-size: 16px;
+    outline: none;
+    width: 250px;                          /* Ancho cómodo para escribir */
+    transition: all 0.3s ease;
+}
+
+/* Efecto cuando el usuario hace clic para escribir (Focus) */
+.cta-input:focus {
+    border-color: #ff0000;                 /* El borde brilla en rojo */
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);  /* Se oscurece más para leer mejor */
+}
+
+/* Ajuste opcional para el botón del formulario si quieres diferenciarlo */
+.btn-submit {
+    background-color: goldenrod;
+    color: #0b0b0d;                        /* Texto oscuro para que contraste */
+    border: 1px solid goldenrod;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #b30000;
+    color: goldenrod;
+    border-color: #b30000;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+}
+

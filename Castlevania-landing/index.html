@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castlevania Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <audio id="musica-fondo" src="Bloody Tears  Orchestrated - Ultra Epic Version.mp3"loop></audio>
+    <audio id="btn-whip" src="latigo.mp3"></audio>
+    <div class="header">
+    <div class="header">
+    <h1 class="logo">Castlevania: Symphony of the Night</h1>
+        <nav>
+            <ul>
+                <li><a href="#">History</a></li>
+                <li><a href="#">About Alucard</a></li>
+                <li><a href="#">Dracula's Castle</a></li>
+                <li><a href="#">Bestiary</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    </div>
+    <div class="hero">
+        <div class="hero-info">
+            <h2>Unleash the power of Dhampyr</h2>
+            <p>Castlevania: Symphony of the Night no es solo un videojuego; es una obra maestra gótica que redefinió la historia del entretenimiento digital y dio origen al género Metroidvania.Lanzado en 1997, este título rompió los moldes de las plataformas lineales para sumergir al jugador en una sinfonía de exploración, acción y rol envuelta en una atmósfera oscura e inolvidable.La Premisa Épica El legendario clan Belmont ha desaparecido y el castillo de Drácula, una criatura del caos que cambia de forma, emerge de entre la niebla antes de tiempo. Es aquí donde despierta Alucard, el hijo dhampir del Conde. Dividido entre su sangre maldita y su humanidad, Alucard decide adentrarse en las entrañas de la fortaleza de su padre para sellarla y salvar a la humanidad, desatando una tragedia familiar de proporciones mitológicas.Razones de su Legado InmortalEl Elixir Visual: Su arte en dos dimensiones (2D) representa la cumbre del pixel art, con animaciones fluidas, escenarios góticos detallados y jefes colosales que superan la estética de su época.Una Banda Sonora Legendaria: Compuesta por Michiru Yamane, la música es una fusión perfecta de rock progresivo, música clásica, techno y jazz que se clava en la mente del jugador para siempre.Libertad y Descubrimiento: El mapa del castillo es un laberinto interconectado repleto de secretos, armas místicas y pasajes ocultos que premian la curiosidad del jugador.El Gran Giro Final: El juego desafía las expectativas con uno de los secretos más icónicos de la historia: la revelación de un segundo castillo invertido, duplicando la aventura y el desafío cuando creías haber terminado.Alucard no solo camina por las sombras; danza en ellas con una gracia letal, convirtiendo cada estocada de espada y cada hechizo en un poema visual de redención y sangre.</p>
+            <button class="btnIntro">Enter the Castle</button>
+        </div>
+        <div class="hero-image">
+            <img src="./Castlevania_sotn_pal.webp" alt="Castlevania">
+        </div>
+    </div>
+    <div class="features-section">
+    <h2>Explore the Castle</h2>
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-box">
+                <!-- Imagen de la espada Alucard Shield / Sword -->
+                <img src="sword_shield.webp" alt="Weapons" class="card-img">
+            </div>
+            <p>Weapons & Shields</p>
+        </div>
+
+        <div class="card">
+            <div class="card-box">
+                <!-- Imagen representativa del castillo invertido -->
+                <img src="castillo_invert.jpg" alt="Inverted Castle" class="card-img">
+            </div>
+            <p>Inverted Castle</p>
+        </div>
+
+        <div class="card">
+            <div class="card-box">
+                <!-- Imagen de una reliquia (ej: Soul of Bat) -->
+                <img src="reliquias.jpg" alt="Relics" class="card-img">
+            </div>
+            <p>Relics of Power</p>
+        </div>
+
+        <div class="card">
+            <div class="card-box">
+                <!-- Imagen de un jefe icónico (ej: Dracula o Death) -->
+                <img src="death2.jpg" alt="Boss Battles" class="card-img">
+            </div>
+            <p>Boss Battles</p>
+        </div>
+
+    </div>
+</div>
+
+    <div class="quote-section">
+        <p>"What is a man? A miserable pile of secrets!".</p>
+        <p class="author">"-Count Dracula".</p>
+    </div>
+    <div class="cta-section">
+        <div class="cta-banner">
+        <div class="left">
+            <h3>Join the hunt</h3>
+            <p>Sign up now to receive news about Symphony of the Night.</p>
+        </div>
+        <div class="right">
+        <!-- Creamos un formulario limpio con un input y el botón -->
+        <form class="cta-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Enter your email..." required class="cta-input">
+            <button type="submit" class="btn-submit">Sign up</button>
+        </form>
+        </div>
+    </div>
+
+    </div>
+    <footer>
+        <p>Castlevania: SOTN Fan landing Page- Made for the Odin Proyect</p>
+    </footer>
+</body>
+</html>
