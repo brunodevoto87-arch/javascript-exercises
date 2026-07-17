@@ -536,11 +536,16 @@ footer {
     align-items: center;
     gap: 24px;
   }
-  /* Ajustes de fondo para dispositivos móviles (mejora rendimiento) */
+  /* Ajustes de fondo para dispositivos móviles (mostrar imagen claramente) */
   body{
+    /* Usar solo la imagen de fondo en móvil para que no quede cubierta por un overlay opaco */
+    background-image: url('Castlevania_sotn_pal.webp');
+    background-color: #050507;
+    background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
     background-position: center top;
+    background-blend-mode: normal;
   }
   .quote-section {
     padding: 32px 24px;
