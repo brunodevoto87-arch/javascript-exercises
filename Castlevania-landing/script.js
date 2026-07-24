@@ -98,47 +98,13 @@ setInterval(() => {
 function showNotification(message, icon = '', duration = 3000) {
   // Crear elemento de notificación
   const notification = document.createElement('div');
-  notification.style.cssText = `
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: rgba(139, 0, 0, 0.9);
-  color: #e2e2e2;
-  padding: 16px 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  max-width: 300px;
-  word-wrap: break-word;
-  font-size: 14px;
-  border-left: 4px solid #ff0000;
-  animation: slideIn 0.3s ease-out;
-  `;
+  notification.classList.add("notification-box");
   notification.textContent = message;
   document.body.appendChild(notification);
 
-  // Agregar animación
-  const style = document.createElement('style');
-  style.textContent = `
-  @keyframes slideIn {
-    from {
-      transform: translateX(400px);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  `;
-  if (!document.querySelector('style[data-notification]')) {
-    style.setAttribute('data-notification', 'true');
-    document.head.appendChild(style);
-  }
-
   // Remover después del tiempo especificado
   setTimeout(() => {
-    notification.style.animation = 'slideIn 0.3s ease-out reverse';
+    notification.classList.add("slide-out");
     setTimeout(() => notification.remove(), 300);
   }, duration);
 }
