@@ -424,6 +424,21 @@ h1, h2, h3 {
   border-color:#b30000;
   box-shadow:0 0 12px rgba(255,0,0,0.6);
 }
+.btn-musica{
+  background-color: darkred;
+  color: goldenrod;
+  border: 2px solid gold;
+  padding: 15px;
+  cursor: pointer;
+}
+.btn-musica:hover{
+  background-color: #1a1a1a;
+  color: darkred;
+  border: 2px solid goldenrod;
+}
+.btn-musica h2{
+  text-align: center;
+}
 footer {
   color:#a39373;
   background-color:#050507;
