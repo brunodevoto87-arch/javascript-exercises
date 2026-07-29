@@ -1,22 +1,21 @@
-function Libro(title, author, pages, read){
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}   
-Libro.prototype.info = function() {
-        return "El libro es: " + this.title + " y el autor es: " + this.author + " tiene " + this.pages + " y " +  this.read;
+class Book{
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    toggleReadStatus(){
+        this.read = !this.read;
+    }
 }
-Libro.prototype.toggleRead= function(){
-    this.read = !this.read;
-}
+
 let library = [];
 function addToLibrary(libro){
     library.push(libro);
 }
 function crearLibro(title, author, pages, read){
-    const libro = new Libro(title, author, pages, read);
+    const libro = new Book(title, author, pages, read);
     return libro;
 }
 function mostrarLibro(){
