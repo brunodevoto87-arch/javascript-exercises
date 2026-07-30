@@ -2,12 +2,13 @@ import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-    mode: "development",
+    mode: "production",
     entry: "./src/index.js",
     output: {
         filename: "main.js",
         path: path.resolve(import.meta.dirname, "dist"),
         clean: true,
+        publicPath: "",
     },
     devtool: "eval-source-map",
     devServer:{
