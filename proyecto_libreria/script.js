@@ -1,5 +1,6 @@
 class Book{
     constructor(title, author, pages, read){
+        this.id = crypto.randomUUID();
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -75,7 +76,7 @@ contenedor.addEventListener("click", (evento)=>{
         const idLibro = tarjeta.dataset.id;
         const libroEncontrado = library.find(libro => libro.id === idLibro);
         if(libroEncontrado){
-            libroEncontrado.toggleRead();
+            libroEncontrado.toggleReadStatus();
             mostrarLibro();
         }
     }
@@ -105,7 +106,7 @@ form.addEventListener("submit",(event)=>{
         inputAuthor.setCustomValidity("");
         document.querySelector("#error-autor").textContent = "";
     }
-    if (inputPaginas.value.trim() === ""){
+    if (inputPaginas.value.trim() === "" || Number(inputPaginas.value)<1){
         inputPaginas.setCustomValidity("El numero de paginas Obligatorio");
         document.querySelector("#error-paginas").textContent = "El numero de paginas es Obligatorio";
         formularioValido = false;
@@ -116,8 +117,12 @@ form.addEventListener("submit",(event)=>{
     console.log("El valor de formularioValido es:",formularioValido);
     if(formularioValido){
         console.log("¡El Formulario es valido! agregando libro....");
-        const nuevoLibro = crearLibro();
-        addLibro(nuevoLibro);
+        const tituloIngresado = document.querySelector("#titulo").value;
+        const autorIngresado = document.querySelector("#author").value;
+        const paginasIngresadas = document.querySelector("#pages").value;
+        const readIngresado = document.querySelector("#read").checked;
+        const nuevoLibro = crearLibro(tituloIngresado, autorIngresado, paginasIngresadas, readIngresado);
+        addToLibrary(nuevoLibro);
         mostrarLibro();
         document.querySelector("#titulo").value = "";
         document.querySelector("#author").value = "";
