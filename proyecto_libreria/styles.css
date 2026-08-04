@@ -13,3 +13,12 @@
     gap: 20px;
     padding: 15px;
 }
+.error-message{
+    color: red;
+    font-size: 0.9em;
+    display: block;
+    border: 2px solid limegreen;
+    width: 100%;
+    margin-top: 5px;
+    font-weight: bold;
+}

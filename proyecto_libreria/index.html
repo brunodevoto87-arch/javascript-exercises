@@ -10,26 +10,28 @@
 <body>
     <div><button class="btn-libro">Nuevo Libro</button></div>
     <dialog id="modal-libro">
-        <form method="dialog">
+        <form novalidate method="dialog">
             <div>
                 <label for="titulo">Title</label>
-                <input type="text" id="titulo">
+                <input type="text" id="titulo" required>
+                <span id="error-titulo" class="error-message"></span>
             </div>
             <div> 
                 <label for="author">Author</label>
-                <input type="text" id="author">
+                <input type="text" id="author" required>
+                <span id="error-autor" class="error-message"></span>
             </div>
             <div>
                 <label for="pages">Pages</label>
                 <input type="number" id="pages">
+                <span id="error-paginas" class="error-message"></span>
             </div>
             <div> 
                 <label for="read">Read</label>
                 <input type="checkbox" id="read">
             </div>
             <div>
-                <label for="guardar">Guardar Libro</label>
-                <input type="submit" id="guardar">
+                <button type="submit">Guardar Libro</button>
             </div>
         </form>
     </dialog>

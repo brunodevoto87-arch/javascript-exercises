@@ -36,11 +36,22 @@ function mostrarLibro(){
 const btnNuevoLibro = document.querySelector(".btn-libro");
 const modalLibro = document.querySelector("#modal-libro");
 btnNuevoLibro.addEventListener("click",()=>{
+    document.querySelector("#titulo").value;
+    document.querySelector("#author").value;
+    document.querySelector("#pages").value;
+
+    document.querySelector("#error-titulo").textContent ="";
+    document.querySelector("#error-autor").textContent ="";
+    document.querySelector("#error-paginas").textContent ="";
+
+    document.querySelector("#titulo").setCustomValidity("");
+    document.querySelector("#author").setCustomValidity("");
     modalLibro.showModal();
 });
-const formulario = document.querySelector("form");
+/*const formulario = document.querySelector("form");
 formulario.addEventListener("submit",(evento)=>{
     evento.preventDefault();
+    console.log("El formulario se está intentando enviar");
     const tituloIngresado = document.querySelector("#titulo").value;
     const authorIngresado = document.querySelector("#author").value;
     const pagesIngresado = document.querySelector("#pages").value;
@@ -50,7 +61,7 @@ formulario.addEventListener("submit",(evento)=>{
     mostrarLibro();
     modalLibro.close();
     formulario.reset();
-})
+})*/
 const contenedor = document.querySelector(".contenedor-biblioteca");
 contenedor.addEventListener("click", (evento)=>{
     if(evento.target.classList.contains("btn-eliminar")){
@@ -67,5 +78,50 @@ contenedor.addEventListener("click", (evento)=>{
             libroEncontrado.toggleRead();
             mostrarLibro();
         }
+    }
+})
+const form = document.querySelector("form");
+form.addEventListener("submit",(event)=>{
+    event.preventDefault();
+    const inputTitulo = document.querySelector("#titulo");
+    const inputAuthor = document.querySelector("#author");
+    const inputPaginas = document.querySelector("#pages");
+    
+    let formularioValido = true;
+    if (inputTitulo.value.trim() === ""){
+        inputTitulo.setCustomValidity("El titulo es Obligatorio");
+        document.querySelector("#error-titulo").textContent = "El titulo es Obligatorio";
+        console.log("mensaje puesto en el span:", document.querySelector("#error-titulo").textContent);
+        formularioValido = false;
+    }else{
+        inputTitulo.setCustomValidity("");
+        document.querySelector("#error-titulo").textContent = "";
+    }
+    if (inputAuthor.value.trim() === ""){
+        inputAuthor.setCustomValidity("El nombre del autor es Obligatorio");
+        document.querySelector("#error-autor").textContent = "El nombre del autor es Obligatorio";
+        formularioValido = false;
+    }else{
+        inputAuthor.setCustomValidity("");
+        document.querySelector("#error-autor").textContent = "";
+    }
+    if (inputPaginas.value.trim() === ""){
+        inputPaginas.setCustomValidity("El numero de paginas Obligatorio");
+        document.querySelector("#error-paginas").textContent = "El numero de paginas es Obligatorio";
+        formularioValido = false;
+    }else{
+        inputPaginas.setCustomValidity("");
+        document.querySelector("#error-paginas").textContent = "";
+    }
+    console.log("El valor de formularioValido es:",formularioValido);
+    if(formularioValido){
+        console.log("¡El Formulario es valido! agregando libro....");
+        const nuevoLibro = crearLibro();
+        addLibro(nuevoLibro);
+        mostrarLibro();
+        document.querySelector("#titulo").value = "";
+        document.querySelector("#author").value = "";
+        document.querySelector("#pages").value = "";
+        document.querySelector("#modal-libro").close();
     }
 })
