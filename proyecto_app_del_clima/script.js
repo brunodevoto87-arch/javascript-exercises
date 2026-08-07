@@ -9,14 +9,16 @@ let currentTempF = 0;
 let currentLocation = "";
 let lastData = null;
 async function getWeather(city){
-    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(city)}`;
 
     try{
         resultDiv.innerHTML = `
         <p style="color: black; font-size: 1.2rem;">Buscando el clima de ${city}</p>`
-        await new Promise(r =>setTimeout(r,1500));
         const response = await fetch(url);
         const data = await response.json();
+        if (!response.ok){
+            throw new Error(data.error?.message || "No se pudo obtener el clima.");
+        }
         /*const temp = data.current.temp_c;*/
         lastData = data;
         currentTempC = data.current.temp_c;
@@ -27,6 +29,7 @@ async function getWeather(city){
         updateUI()
     } catch(error){
         console.error("el error:", error);
+        resultDiv.innerHTML = `<p>No se pudo obtener el clima. Intenta con otra ciudad.</p>`;
     }
 }
 function updateUI(){
@@ -38,7 +41,7 @@ function updateUI(){
     const iconUrl = lastData.current.condition.icon;
     resultDiv.innerHTML = `
         <h2>Clima en ${lastData.location.name}</h2>
-        <p>Temperatura: ${tempDisplay}</p>
+        <p>Temperatura: ${tempDisplay}${unit}</p>
         <p>Humedad: ${humidity}</p>
         <p>Condicion: ${condition}</p>
         <img src="${iconUrl}" alt="Icono del Clima"/>
