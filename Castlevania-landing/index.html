@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer>
-    </script>
+    <script type="module" src="./script.js" defer></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦇</text></svg>">
      <title>
       Castlevania Landing Page
     </title>
   </head>
   <body>
-    <div class="header">
+    <div id="home-page">
+      <div class="header">
       <h1 class="logo">
         Castlevania: Symphony of the Night
       </h1>
@@ -34,9 +34,7 @@
             </a>
           </li>
           <li>
-            <a href="#">
-              Bestiary
-            </a>
+            <span id="btn-bestiario" style="cursor: pointer;">Bestiary</span>
           </li>
         </ul>
       </nav>
@@ -178,6 +176,8 @@
           <audio src="" class="mi-reproductor"></audio>
       </div>
     </div>
+    </div>
+    <div id="bestiario-page"></div>
     <footer>
       <p>
        "Castlevania: SOTN Fan Landing Page | Developed by Bruno Devoto for The Odin Project"

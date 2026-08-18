@@ -1,5 +1,10 @@
+import { bestiario } from './bestiarioData.js';
+
 const musica = document.querySelector("#musica-fondo")
 const btnCastle = document.querySelector(".btnIntro");
+const btnBestiario = document.querySelector("#btn-bestiario");
+btnBestiario.addEventListener("click",goToBestiary);
+
 //const sonidoLatigo = new Audio('./latigo.mp3');
 
 const listaDeCanciones = [
@@ -189,3 +194,110 @@ function showNotification(message, icon = '', duration = 3000) {
   }, duration);
 }
 cargaCancion();
+
+function renderBestiario(contenedor){
+  contenedor.innerHTML = "";
+  
+  // IDs con imágenes pequeñas que necesitan zoom a 1.4
+  const idsImagenGrande = [4, 8, 9, 10, 16, 22, 23, 25, 26, 31, 33, 34, 36, 37, 38, 48, 49,60, 61, 68, 72, 80, 81, 89, 95, 96,102, 103, 108, 118, 121];
+
+  bestiario.forEach((monstruo)=>{
+    const tarjeta = document.createElement("div");
+    tarjeta.classList.add("tarjeta-monstruo");
+    
+    // Agregar clase para imágenes grandes
+    if (idsImagenGrande.includes(monstruo.id)) {
+      tarjeta.classList.add("imagen-grande");
+    }
+
+    const badge = document.createElement("span");
+    badge.classList.add("tipo-monstruo");
+    badge.textContent = monstruo.tipo;
+    const tipoColor = monstruo.tipo.toLowerCase().includes("elite") ? "elite" :
+      monstruo.tipo.toLowerCase().includes("común") || monstruo.tipo.toLowerCase().includes("comun") ? "comun" :
+      monstruo.tipo.toLowerCase().includes("fantasma") ? "fantasma" : "normal";
+    badge.classList.add(tipoColor);
+    tarjeta.appendChild(badge);
+
+    const imagenContenedor = document.createElement("div");
+    imagenContenedor.classList.add("imagen-contenedor");
+    
+    const img = document.createElement("img");
+    img.src = monstruo.imagen;
+    img.alt = monstruo.nombre;
+    imagenContenedor.appendChild(img);
+    
+    tarjeta.appendChild(imagenContenedor);
+
+    const nombre = document.createElement("h3");
+    nombre.textContent = monstruo.nombre;
+    tarjeta.appendChild(nombre);
+
+    const tipo = document.createElement("p");
+    tipo.textContent = `Tipo: ${monstruo.tipo}`;
+    tarjeta.appendChild(tipo);
+
+    const desc = document.createElement("p");
+    desc.textContent = monstruo.descripcion;
+    tarjeta.appendChild(desc);
+    
+    const stats = document.createElement("div");
+    stats.className = "stats-monstruo";
+
+    const  hpText = document.createElement("p");
+    hpText.innerHTML = `<span>Hp:</span> <span>${monstruo.hp || "?"}</span>`;
+    stats.appendChild(hpText);
+
+    const expText = document.createElement("p");
+    expText.innerHTML = `<span>Exp:</span> <span>${monstruo.exp || "?"}</span>`;
+    stats.appendChild(expText)
+
+    const dropText = document.createElement("p");
+    dropText.innerHTML = `<span>Drop:</span> <span>${monstruo.drop  || "Ninguno"}</span>`;
+    stats.appendChild(dropText);
+
+    const lugarText = document.createElement("p");
+    lugarText.innerHTML = `<span>Ubicacion:</span> <span>${monstruo.ubicacion || "Desconocida"}</span>`;
+    stats.appendChild(lugarText);
+    tarjeta.appendChild(stats);
+
+    contenedor.appendChild(tarjeta);
+  });
+}
+
+function goToHome(){
+  document.querySelector("#home-page").style.display = "block";
+  document.querySelector("#bestiario-page").style.display = "none";
+}
+
+function goToBestiary(){
+  document.querySelector("#home-page").style.display = "none";
+  const bestiarioPage = document.querySelector("#bestiario-page");
+  bestiarioPage.style.display = "block";
+  bestiarioPage.innerHTML = "";
+
+  const encabezado = document.createElement("div");
+  encabezado.classList.add("bestiario-header");
+
+  const titulo = document.createElement("h2");
+  titulo.textContent = "Bestiario";
+
+  const subtitulo = document.createElement("p");
+  subtitulo.textContent = "Creatures of the Castle";
+
+  const btnVolver = document.createElement("button");
+  btnVolver.textContent = "Volver al inicio";
+  btnVolver.addEventListener("click",goToHome);
+
+  encabezado.appendChild(titulo);
+  encabezado.appendChild(subtitulo);
+  encabezado.appendChild(btnVolver);
+  bestiarioPage.appendChild(encabezado);
+
+  const contenedorBestiario = document.createElement("div");
+  contenedorBestiario.id = "bestiario-contenedor";
+  bestiarioPage.appendChild(contenedorBestiario);
+
+  renderBestiario(contenedorBestiario);
+}
+
