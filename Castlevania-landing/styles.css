@@ -29,6 +29,15 @@ body {
   display: block;
   width: 100%;
 }
+.menu-nav a,span{
+  text-decoration: none;
+  color: goldenrod;
+  transition: color 0.3s ease;
+}
+.menu-nav span:hover{
+  color: #ff0000;
+  cursor: pointer;
+}
 /* Elementos genéricos */
 ul {
   list-style: none;
@@ -76,18 +85,18 @@ h1, h2, h3 {
   display: flex;
   gap: 32px;
 }
-.header a {
+.header a, .header span {
   color: goldenrod;
   font-weight: 600;
   font-size: 16px;
   position: relative;
   transition: color .25s ease;
 }
-.header a:hover {
+.header a:hover, .header span:hover {
   color: #ff0000;
   text-shadow: 0 0 8px rgba(255,0,0,0.6);
 }
-.header a::after {
+.header a::after, .header span::after {
   content: '';
   position: absolute;
   left: 0;
@@ -99,7 +108,7 @@ h1, h2, h3 {
   transform-origin: right;
   transition: transform .25s ease-out;
 }
-.header a:hover::after {
+.header a:hover::after, .header span:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
